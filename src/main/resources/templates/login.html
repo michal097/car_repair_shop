@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <title>Warsztat samochodowy</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href=@{/css.css} type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+</head>
+
+<body>
+<div class="header">
+    <h1>
+        Warsztat samochodowy
+    </h1>
+
+</div>
+
+
+
+<div class="navbar" id="navbar">
+
+    <div class="bigger">
+        <div class="search-container" style="float:right;margin-right:10px;margin-top:5px;">
+            <form action="#" th:action="@{/search}" th:object="${search}" >
+                <label for="search_input"></label><input type="text" placeholder="wyszukaj..." name="search" id="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+
+            </form>
+        </div>
+        <a th:href="@{/}"><i class="fa fa-fw fa-home" style=""></i> </a>
+        <a th:href="@{/logOut}" style="float: right;"> logOut </a>
+        <a th:href="@{/authenticate}" style="float: right;"> LogIn </a>
+
+
+
+
+
+    </div>
+
+</div>
+
+
+<script>
+    window.onscroll = function() {
+        myFunction1()
+    };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+
+    function myFunction1() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+            document.getElementById("navbar").style.opacity= 0.7;
+            document.getElementById("myBtn").style.display = "block";
+
+        } else {
+            navbar.classList.remove("sticky");
+            document.getElementById("navbar").style.opacity= 1.0;
+            document.getElementById("myBtn").style.display = "none";
+
+        }
+    }
+
+    window.addEventListener('scroll', stickyNavigation);
+
+</script>
+
+<script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+        }
+    }
+</script>
+
+<!--<div th:if="${#fields.hasErrors('email')}" class = "fail_alert">-->
+<!--    <span class="closebtn">&times;</span>-->
+
+<!--    <div class="alert">-->
+<!--        <p   th:errors="*{email}" style="color: white">err</p>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--<div th:if="${#fields.hasErrors('password')}" class = "fail_alert">-->
+<!--    <span class="closebtn">&times;</span>-->
+
+<!--    <div class="alert">-->
+<!--        <p   th:errors="*{password}" style="color: white">err</p>-->
+<!--    </div>-->
+
+<!--</div>-->
+<div class="content" >
+
+
+    <script>
+        var close = document.getElementsByClassName("closebtn");
+        var i;
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function(){
+                var div = this.parentElement;
+                div.s_o_mnietyle.opacity = "0";
+                setTimeout(function(){ div.style.display = "none"; }, 600);
+            }
+        }
+    </script>
+
+
+    <div id="content">
+        <h1 style="text-align: center">Login</h1>
+        <form action="#" th:action="@{/authenticate}" th:object="${authme}" method="post">
+            <div class="login">
+                <input type="text" th:field="*{email}" placeholder="Podaj maila" /> <br />
+                <input type="password" th:field="*{password}" placeholder="Wprowadź hasło" /> <br />
+                <input type="submit" value="Login" /> <br>
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>
+
+<br>
+<div class="footer">
+    <div class="bigger_foo">
+        <a class="phone"><i class="fa">&#xf095;</i>
+            +48 111 222 333</a>
+        <a class=contact_mail><i class="fa fa-fw fa-envelope"></i>
+            warsztat@samochodowy.pl</a>
+    </div>
+
+</div>
+
+</body>
+
+</html>
